@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.List;
 
 public class Light {
   static final int DURATION_BETWEEN_LIGHTS = 3;
@@ -19,5 +21,25 @@ public class Light {
         street.moveCarsThroughInOneSecond();
       }
     }
+  }
+
+  public List<String> getLaneNames() {
+    List<String> laneNames = new LinkedList<>();
+    for (Street street : streets) {
+      for (int i = 1, numLanes = street.getLanes().size(); i <= numLanes; i++) {
+        laneNames.add(street.name + "_" + i);
+      }
+    }
+    return laneNames;
+  }
+
+  public List<Integer> getLaneCapacities() {
+    List<Integer> laneCapacities = new LinkedList<>();
+    for (Street street : streets) {
+      for (Lane lane : street.getLanes()) {
+        laneCapacities.add(lane.getNumCars());
+      }
+    }
+    return laneCapacities;
   }
 }

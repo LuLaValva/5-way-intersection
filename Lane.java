@@ -56,4 +56,8 @@ public class Lane {
       return null;
     }
   }
+
+  public int getNumCars() {
+    return numCars;
+  }
 }
