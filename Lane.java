@@ -4,11 +4,13 @@ import java.util.List;
 public class Lane {
   final Street leavingFrom;
   private final HashMap<Street, Double> goingTo;
+  private final double carsPerSecond;
   private int numCars;
 
-  public Lane(Street leavingFrom, List<Street> goingToStreets, List<Double> goingToLikelihoods) {
+  public Lane(Street leavingFrom, double carsPerSecond, List<Street> goingToStreets, List<Double> goingToLikelihoods) {
     this.leavingFrom = leavingFrom;
     this.numCars = 0;
+    this.carsPerSecond = carsPerSecond;
 
     // Populate Streets with likelihoods
     if (goingToStreets.size() != goingToLikelihoods.size())
@@ -27,7 +29,7 @@ public class Lane {
       double currLikelihood = 0;
       double random = Math.random();
 
-      for (var item : goingTo.keySet()) {
+      for (Street item : goingTo.keySet()) {
         currLikelihood += goingTo.get(item);
         if (random < currLikelihood)
           return item;
