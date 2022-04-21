@@ -11,6 +11,7 @@ public class Light {
     this.streets = streets;
     isGreen = false;
   }
+<<<<<<< Updated upstream
 
   public void advanceOneSecond() {
     for (Street street : streets) {
@@ -19,5 +20,24 @@ public class Light {
         street.moveCarsThroughInOneSecond();
       }
     }
+=======
+  
+  public void startGreenTime() {
+	  greenTimeLeft = duration;
+>>>>>>> Stashed changes
   }
+
+  public boolean advanceOneSecond() {
+	    for (Street street : streets) {
+	      street.enterCarsInOneSecond();
+	      if (greenTimeLeft > 0) {
+	        street.moveCarsThroughInOneSecond();
+	      }
+	    }
+		if (greenTimeLeft > 0) {
+			greenTimeLeft--;
+			return greenTimeLeft==0;
+		}
+		return false;
+	  }
 }
