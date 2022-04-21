@@ -20,10 +20,18 @@ public class Street {
   }
 
   public void enterCarsInOneSecond() {
-
+    for (final Lane lane : lanes) {
+      lane.addCarsForOneSecond();
+    }
   }
 
-  public void moveCarsThroughInOneSecond() {
-
+  public List<Street> moveCarsThroughInOneSecond() {
+    final List<Street> wentTo = new LinkedList<>();
+    for (Lane lane : lanes) {
+      final Street exitStreet = lane.moveCarsThroughInOneSecond();
+      if (exitStreet != null)
+        wentTo.add(exitStreet);
+    }
+    return wentTo;
   }
 }

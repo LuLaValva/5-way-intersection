@@ -2,6 +2,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Lane {
+  private static final double CAR_MOVE_LIKELIHOOD_PER_SECOND = 0.3;
+
   final Street leavingFrom;
   private final HashMap<Street, Double> goingTo;
   private final double carsPerSecond;
@@ -41,7 +43,17 @@ public class Lane {
     }
   }
 
-  public void addCars(int numCars) {
-    this.numCars += numCars;
+  public void addCarsForOneSecond() {
+    if (Math.random() < carsPerSecond) {
+      numCars++;
+    }
+  }
+
+  public Street moveCarsThroughInOneSecond() {
+    if (Math.random() < CAR_MOVE_LIKELIHOOD_PER_SECOND) {
+      return moveCarThrough();
+    } else {
+      return null;
+    }
   }
 }

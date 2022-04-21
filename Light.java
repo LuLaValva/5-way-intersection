@@ -4,18 +4,18 @@ public class Light {
 
   private final Street[] streets;
   final int duration;
-  private boolean isGreen;
+  private int greenTimeLeft;
 
   public Light(int duration, Street[] streets) {
     this.duration = duration;
     this.streets = streets;
-    isGreen = false;
+    greenTimeLeft = 0;
   }
 
   public void advanceOneSecond() {
     for (Street street : streets) {
       street.enterCarsInOneSecond();
-      if (isGreen) {
+      if (greenTimeLeft > 0) {
         street.moveCarsThroughInOneSecond();
       }
     }
