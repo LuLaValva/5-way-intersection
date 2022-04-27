@@ -2,13 +2,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Lane {
+  private static final double CAR_MOVE_LIKELIHOOD_PER_SECOND = 0.3;
+
   final Street leavingFrom;
   private final HashMap<Street, Double> goingTo;
+  private final double carsPerSecond;
   private int numCars;
 
-  public Lane(Street leavingFrom, List<Street> goingToStreets, List<Double> goingToLikelihoods) {
+  public Lane(Street leavingFrom, double carsPerSecond, List<Street> goingToStreets, List<Double> goingToLikelihoods) {
     this.leavingFrom = leavingFrom;
     this.numCars = 0;
+    this.carsPerSecond = carsPerSecond;
 
     // Populate Streets with likelihoods
     if (goingToStreets.size() != goingToLikelihoods.size())
@@ -27,7 +31,7 @@ public class Lane {
       double currLikelihood = 0;
       double random = Math.random();
 
-      for (var item : goingTo.keySet()) {
+      for (Street item : goingTo.keySet()) {
         currLikelihood += goingTo.get(item);
         if (random < currLikelihood)
           return item;
@@ -39,7 +43,21 @@ public class Lane {
     }
   }
 
-  public void addCars(int numCars) {
-    this.numCars += numCars;
+  public void addCarsForOneSecond() {
+    if (Math.random() < carsPerSecond) {
+      numCars++;
+    }
+  }
+
+  public Street moveCarsThroughInOneSecond() {
+    if (Math.random() < CAR_MOVE_LIKELIHOOD_PER_SECOND) {
+      return moveCarThrough();
+    } else {
+      return null;
+    }
+  }
+
+  public int getNumCars() {
+    return numCars;
   }
 }
