@@ -9,14 +9,10 @@ public class Intersection {
   }
 
   public void advanceOneSecond() {
-    for (int i=0; i<lights.size(); i++) {
+    for (int i = 0; i < lights.size(); i++) {
       if (lights.get(i).advanceOneSecond()) {
-    	  if (i+1 <= lights.size()) {
-    		  lights.get(i+1).startGreenTime();
-    	  } else {
-    		  lights.get(0).startGreenTime();
-    	  }
-      };
+        lights.get((i + 1) % lights.size()).startGreenTime();
+      }
     }
   }
 }
