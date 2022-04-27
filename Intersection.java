@@ -6,6 +6,9 @@ public class Intersection {
 
   public Intersection(List<Light> lights) {
     this.lights = new LinkedList<>(lights);
+    if (lights.size() > 0) {
+      lights.get(0).startGreenTime();
+    }
   }
 
   public void advanceOneSecond() {
@@ -38,7 +41,6 @@ public class Intersection {
         str.append(capacity);
         str.append(", ");
       }
-      str.append(light.getLaneCapacities());
     }
     if (str.length() > 0) {
       // Remove trailing comma

@@ -7,6 +7,7 @@ public class Street {
 
   public Street(String name) {
     this.name = name;
+    lanes = new LinkedList<>();
   }
 
   public Lane addLane(double carsPerSecond, List<Street> goingToStreets, List<Double> goingToLikelihoods) {

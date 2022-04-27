@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Lane {
-  private static final double CAR_MOVE_LIKELIHOOD_PER_SECOND = 0.3;
+  private static final double CAR_MOVE_LIKELIHOOD_PER_SECOND = 1.0;
 
   final Street leavingFrom;
   private final HashMap<Street, Double> goingTo;
