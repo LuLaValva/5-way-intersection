@@ -14,13 +14,22 @@ public class Light {
     greenTimeLeft = 0;
   }
 
-  public void advanceOneSecond() {
+  public void startGreenTime() {
+    greenTimeLeft = duration;
+  }
+
+  public boolean advanceOneSecond() {
     for (Street street : streets) {
       street.enterCarsInOneSecond();
       if (greenTimeLeft > 0) {
         street.moveCarsThroughInOneSecond();
       }
     }
+    if (greenTimeLeft > 0) {
+      greenTimeLeft--;
+      return greenTimeLeft == 0;
+    }
+    return false;
   }
 
   public List<String> getLaneNames() {
