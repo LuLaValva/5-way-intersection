@@ -2,15 +2,16 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Lane {
-  private static final double CAR_MOVE_LIKELIHOOD_PER_SECOND = 1.0;
+  private final double CAR_MOVE_LIKELIHOOD_PER_SECOND;
 
   final Street leavingFrom;
   private final HashMap<Street, Double> goingTo;
   private final double carsPerSecond;
   private int numCars;
 
-  public Lane(Street leavingFrom, double carsPerSecond, List<Street> goingToStreets, List<Double> goingToLikelihoods) {
-    this.leavingFrom = leavingFrom;
+  public Lane(Street leavingFrom, double carsPerSecond, double leaveRate, List<Street> goingToStreets, List<Double> goingToLikelihoods) {
+	this.leavingFrom = leavingFrom;
+	CAR_MOVE_LIKELIHOOD_PER_SECOND = leaveRate;
     this.numCars = 0;
     this.carsPerSecond = carsPerSecond;
 

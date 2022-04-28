@@ -10,8 +10,8 @@ public class Street {
     lanes = new LinkedList<>();
   }
 
-  public Lane addLane(double carsPerSecond, List<Street> goingToStreets, List<Double> goingToLikelihoods) {
-    Lane newLane = new Lane(this, carsPerSecond, goingToStreets, goingToLikelihoods);
+  public Lane addLane(double carsPerSecond, double leaveRate, List<Street> goingToStreets, List<Double> goingToLikelihoods) {
+    Lane newLane = new Lane(this, carsPerSecond, leaveRate, goingToStreets, goingToLikelihoods);
     lanes.add(newLane);
     return newLane;
   }
