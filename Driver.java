@@ -4,8 +4,10 @@ public class Driver {
   public static void main(String[] args) {
     Intersection intersection = createModel();
 
+		int numrows = args.length >= 1 ? Integer.parseInt(args[0]) : 500;
+
 		intersection.printCSVHeader();
-		for (int i=0; i < 1000; i++) {
+		for (int i=0; i < numrows; i++) {
 			intersection.advanceOneSecond();
 			intersection.printCSVRow();
 		}
