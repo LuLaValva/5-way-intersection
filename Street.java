@@ -2,6 +2,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Street {
+  private static final double JOCKEY_PROBABILITY = 0.001;
+
   private LinkedList<Lane> lanes;
   final String name;
 
@@ -26,12 +28,24 @@ public class Street {
     }
   }
 
+  public void doJockey() {
+    int laneFrom = (int)(Math.random() * lanes.size());
+    int laneTo;
+    do {
+      laneTo = (int)(Math.random() * lanes.size());
+    } while (laneTo == laneFrom);
+    lanes.get(laneFrom).balkCar();
+    lanes.get(laneTo).addOneCar();
+  }
+
   public List<Street> moveCarsThroughInOneSecond() {
     final List<Street> wentTo = new LinkedList<>();
     for (Lane lane : lanes) {
       final Street exitStreet = lane.moveCarsThroughInOneSecond();
       if (exitStreet != null)
         wentTo.add(exitStreet);
+      if (Math.random() < JOCKEY_PROBABILITY)
+        doJockey();
     }
     return wentTo;
   }

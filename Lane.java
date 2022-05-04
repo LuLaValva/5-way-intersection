@@ -58,6 +58,16 @@ public class Lane {
     }
   }
 
+  public void addOneCar() {
+    numCars++;
+  }
+
+  public void balkCar() {
+    if (numCars > 0) {
+      numCars--;
+    }
+  }
+
   public int getNumCars() {
     return numCars;
   }
