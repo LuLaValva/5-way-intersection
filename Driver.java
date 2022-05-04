@@ -20,8 +20,8 @@ public class Driver {
 	  Street sickler = new Street("Sicklerville");
 	  Street clayton = new Street("Clayton");
  	  
-	  gboro.addLane(0.066, 0.422, Arrays.asList(sickler,south),Arrays.asList(0.476190476,0.437229437));
-	  gboro.addLane(0.01, 0.04, Arrays.asList(north,clayton),Arrays.asList(0.034632035,0.051948052));
+	  gboro.addLane(0.01, 0.04, Arrays.asList(north,sickler),Arrays.asList(0.034632035,0.051948052));
+	  gboro.addLane(0.066, 0.422, Arrays.asList(south, clayton),Arrays.asList(0.476190476,0.437229437));
 	  north.addLane(0.033, 0.13325, Arrays.asList(sickler),Arrays.asList(0.357541899));
 	  north.addLane(0.051, 0.23958, Arrays.asList(gboro,clayton,south),Arrays.asList(0.089385475,0.1620111730,0.391061453));
 	  south.addLane(0.032, 0.13611, Arrays.asList(clayton,gboro),Arrays.asList(0.151898734,0.261603376));
