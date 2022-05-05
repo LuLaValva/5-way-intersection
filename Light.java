@@ -1,3 +1,10 @@
+/**
+ * @author Mathew Fiduk
+ * @author Lucas LaValva
+ * @author Matthew Rudderow
+ * @author Alison Silvestri
+ * @version 5/4/2022
+ */
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,7 +43,7 @@ public class Light {
     List<String> laneNames = new LinkedList<>();
     for (Street street : streets) {
       for (int i = 1, numLanes = street.getLanes().size(); i <= numLanes; i++) {
-        laneNames.add(street.name + "_" + i);
+        laneNames.add(street.getName() + "_" + i);
       }
     }
     return laneNames;

@@ -1,27 +1,34 @@
+/**
+ * @author Mathew Fiduk
+ * @author Lucas LaValva
+ * @author Matthew Rudderow
+ * @author Alison Silvestri
+ * @version 5/4/2022
+ */
 import java.util.LinkedList;
 import java.util.List;
 
 public class Intersection {
-  private final LinkedList<Light> lights;
+  private final LinkedList<Light> LIGHTS;
 
   public Intersection(List<Light> lights) {
-    this.lights = new LinkedList<>(lights);
-    if (lights.size() > 0) {
-      lights.get(0).startGreenTime();
+    this.LIGHTS = new LinkedList<>(lights);
+    if (LIGHTS.size() > 0) {
+      LIGHTS.get(0).startGreenTime();
     }
   }
 
   public void advanceOneSecond() {
-    for (int i = 0; i < lights.size(); i++) {
-      if (lights.get(i).advanceOneSecond()) {
-        lights.get((i + 1) % lights.size()).startGreenTime();
+    for (int i = 0; i < LIGHTS.size(); i++) {
+      if (LIGHTS.get(i).advanceOneSecond()) {
+        LIGHTS.get((i + 1) % LIGHTS.size()).startGreenTime();
       }
     }
   }
 
   public void printCSVHeader() {
     StringBuilder str = new StringBuilder();
-    for (Light light : lights) {
+    for (Light light : LIGHTS) {
       for (String laneName : light.getLaneNames()) {
         str.append(laneName);
         str.append(", ");
@@ -36,7 +43,7 @@ public class Intersection {
 
   public void printCSVRow() {
     StringBuilder str = new StringBuilder();
-    for (Light light : lights) {
+    for (Light light : LIGHTS) {
       for (Integer capacity : light.getLaneCapacities()) {
         str.append(capacity);
         str.append(", ");
