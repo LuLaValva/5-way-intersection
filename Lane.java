@@ -67,7 +67,7 @@ public class Lane {
     numCars++;
   }
 
-  public void balkCar() {
+  public void jockeyCar() {
     if (numCars > 0) {
       numCars--;
     }

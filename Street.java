@@ -45,7 +45,7 @@ public class Street {
     do {
       laneTo = (int)(Math.random() * lanes.size());
     } while (laneTo == laneFrom);
-    lanes.get(laneFrom).balkCar();
+    lanes.get(laneFrom).jockeyCar();
     lanes.get(laneTo).addOneCar();
   }
 

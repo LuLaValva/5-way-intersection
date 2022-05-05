@@ -11,22 +11,22 @@ import java.util.List;
 public class Light {
   static final int DURATION_BETWEEN_LIGHTS = 3;
 
-  private final Street[] streets;
-  final int duration;
+  private final Street[] STREETS;
+  final int DURATION;
   private int greenTimeLeft;
 
   public Light(int duration, Street[] streets) {
-    this.duration = duration;
-    this.streets = streets;
+    this.DURATION = duration;
+    this.STREETS = streets;
     greenTimeLeft = 0;
   }
 
   public void startGreenTime() {
-    greenTimeLeft = duration;
+    greenTimeLeft = DURATION;
   }
 
   public boolean advanceOneSecond() {
-    for (Street street : streets) {
+    for (Street street : STREETS) {
       street.enterCarsInOneSecond();
       if (greenTimeLeft > 0) {
         street.moveCarsThroughInOneSecond();
@@ -41,7 +41,7 @@ public class Light {
 
   public List<String> getLaneNames() {
     List<String> laneNames = new LinkedList<>();
-    for (Street street : streets) {
+    for (Street street : STREETS) {
       for (int i = 1, numLanes = street.getLanes().size(); i <= numLanes; i++) {
         laneNames.add(street.getName() + "_" + i);
       }
@@ -51,7 +51,7 @@ public class Light {
 
   public List<Integer> getLaneCapacities() {
     List<Integer> laneCapacities = new LinkedList<>();
-    for (Street street : streets) {
+    for (Street street : STREETS) {
       for (Lane lane : street.getLanes()) {
         laneCapacities.add(lane.getNumCars());
       }
